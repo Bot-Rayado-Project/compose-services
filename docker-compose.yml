@@ -79,7 +79,7 @@ services:
     networks:
       - rayadonet
     volumes:
-      - bots-db:/tgbot/botrayado/database/db/
+      - bots-db-tg:/tgbot/botrayado/database/db/
     depends_on:
       - rest-service
     restart: unless-stopped
