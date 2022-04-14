@@ -1,0 +1,84 @@
+version: '3.9'
+
+services:
+  postgres:
+    container_name: basic-postgres
+    image: postgres
+    env_file:
+      postgres.env
+    environment:
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+      - rayadonet
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    env_file:
+      - postgres.env
+    environment:
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - 5050:80
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  schedule-parser:
+    container_name: schedule-parser-container
+    build: ./schedule-parser
+    env_file:
+      - services.env
+    ports:
+      - 5000:5000
+    networks:
+      - rayadonet
+    depends_on:
+      - postgres
+    restart: unless-stopped
+
+  rest-service:
+    container_name: rest-service-container
+    build: ./rest-service
+    env_file:
+      - services.env
+    ports:
+      - 8000:8000
+    networks:
+      - rayadonet
+    depends_on:
+      - schedule-parser
+    restart: unless-stopped
+
+  vkbot:
+    container_name: vkbot-container
+    build: ./vkbot
+    env_file:
+      - vkbot.env
+    networks:
+      - rayadonet
+    volumes:
+      - bots-db:/vkbot/botrayado/database/db/
+    depends_on:
+      - rest-service
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+  rayadonet:
+    external: true
+
+volumes:
+    postgres:
+    pgadmin:
+    bots-db:
+    bots-db-tg:
