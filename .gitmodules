@@ -1,6 +1,6 @@
 [submodule "schedule-parser"]
 	path = schedule-parser
-	url = git@github.com:Rayado-Development/schedule-parser.git
+	url = https://github.com/Rayado-Development/schedule-parser.git
 [submodule "rest-service"]
 	path = rest-service
 	url = https://github.com/Rayado-Development/rest-service.git
