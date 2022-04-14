@@ -71,7 +71,7 @@ services:
       - rest-service
     restart: unless-stopped
   
-  tbbot:
+  tgbot:
     container_name: tgbot-container
     build: ./tgbot
     env_file:
