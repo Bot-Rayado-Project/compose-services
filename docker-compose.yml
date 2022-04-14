@@ -70,6 +70,19 @@ services:
     depends_on:
       - rest-service
     restart: unless-stopped
+  
+  tbbot:
+    container_name: tgbot-container
+    build: ./tgbot
+    env_file:
+      - tgbot.env
+    networks:
+      - rayadonet
+    volumes:
+      - bots-db:/tgbot/botrayado/database/db/
+    depends_on:
+      - rest-service
+    restart: unless-stopped
 
 networks:
   postgres:
