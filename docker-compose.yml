@@ -83,7 +83,6 @@ services:
     networks:
       - rayadonet
     volumes:
-      - bots-db-tg:/tgbot/botrayado/database/db/
       - tgbot-logs:/tgbot/logs/
     depends_on:
       - rest-service
@@ -114,7 +113,6 @@ networks:
 volumes:
     postgres:
     pgadmin:
-    bots-db-tg:
     schedule-parser-logs:
     vkbot-logs:
     rest-service-logs:
