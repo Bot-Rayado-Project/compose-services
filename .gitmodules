@@ -1,15 +1,15 @@
 [submodule "schedule-parser"]
 	path = schedule-parser
-	url = git@github.com:Rayado-Development/schedule-parser.git
+	url = https://github.com/Rayado-Development/schedule-parser.git
 [submodule "rest-service"]
 	path = rest-service
-	url = git@github.com:Rayado-Development/rest-service.git
+	url = https://github.com/Rayado-Development/rest-service.git
 [submodule "vkbot"]
 	path = vkbot
-	url = git@github.com:Rayado-Development/vkbot.git
+	url = https://github.com/Rayado-Development/vkbot.git
 [submodule "tgbot"]
 	path = tgbot
-	url = git@github.com:Rayado-Development/tgbot.git
+	url = https://github.com/Rayado-Development/tgbot.git
 [submodule "logs-service"]
 	path = logs-service
-	url = git@github.com:Rayado-Development/logs-service.git
+	url = https://github.com/Rayado-Development/logs-service.git
