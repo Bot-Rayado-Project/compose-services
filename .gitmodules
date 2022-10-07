@@ -1,0 +1,12 @@
+[submodule "schedule-parser"]
+	path = schedule-parser
+	url = git@github.com:Bot-Rayado-Project/schedule-parser.git
+[submodule "vkbot"]
+	path = vkbot
+	url = git@github.com:Bot-Rayado-Project/vkbot.git
+[submodule "tgbot"]
+	path = tgbot
+	url = git@github.com:Bot-Rayado-Project/tgbot.git
+[submodule "rest-service"]
+	path = rest-service
+	url = git@github.com:Bot-Rayado-Project/rest-service.git
