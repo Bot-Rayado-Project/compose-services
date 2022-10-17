@@ -38,11 +38,9 @@ services:
     env_file:
       - services.env
     ports:
-      - 5000:5000
+      - 7120:80
     networks:
       - rayadonet
-    volumes:
-      - schedule-parser-logs:/schedule-parser/logs/
     depends_on:
       - postgres
     restart: unless-stopped
@@ -56,8 +54,6 @@ services:
       - 8000:8000
     networks:
       - rayadonet
-    volumes:
-      - rest-service-logs:/rest-service/logs/
     depends_on:
       - schedule-parser
     restart: unless-stopped
@@ -69,46 +65,14 @@ services:
       - vkbot.env
     networks:
       - rayadonet
-    volumes:
-      - vkbot-logs:/vkbot/logs/
     depends_on:
       - rest-service
-    restart: unless-stopped
-
-  tgbot: 
-    container_name: tgbot-container
-    build: ./tgbot
-    env_file:
-      - tgbot.env
-    networks:
-      - rayadonet
-    volumes:
-      - tgbot-logs:/tgbot/logs/
-    depends_on:
-      - rest-service
-    restart: unless-stopped
-  
-  logs-service:
-    container_name: logs-service-container
-    build: ./logs-service
-    env_file:
-      - logs-service.env
-    ports:
-      - 9000:9000
-    networks:
-      - rayadonet
-    volumes:
-      - schedule-parser-logs:/logs-service/logs/schedule-parser-logs/
-      - rest-service-logs:/logs-service/logs/rest-service-logs/
-      - vkbot-logs:/logs-service/logs/vkbot-logs/
-      - tgbot-logs:/logs-service/logs/tgbot-logs/
     restart: unless-stopped
 
 networks:
   postgres:
     driver: bridge
   rayadonet:
-    external: true
 
 volumes:
     postgres:
@@ -116,4 +80,3 @@ volumes:
     schedule-parser-logs:
     vkbot-logs:
     rest-service-logs:
-    tgbot-logs:
